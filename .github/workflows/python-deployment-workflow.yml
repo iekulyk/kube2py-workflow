@@ -40,8 +40,8 @@ jobs:
     - name: Check Complexity
       run: |
         cd ../
-        flake8 . --exit-zero --max-complexity=1 --statistics
+        flake8 . --exit-zero --max-complexity=10 --statistics
 
     - name: Test with pytest
       run: |
-        pytest
+        pytest -v --cov-report=term-missing --cov=. --cov-report=json
