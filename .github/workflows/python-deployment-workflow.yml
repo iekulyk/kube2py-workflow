@@ -47,6 +47,7 @@ jobs:
         pytest -v --cov-report=term-missing --cov=. --cov-report=json
 
     - name: Upload python artifacts
+      if: ${{ github.ref_name == 'main' }}
       uses: actions/upload-artifact@v4
       with:
         name: python-artifacts
@@ -54,6 +55,7 @@ jobs:
 
   build-image:
     runs-on: ubuntu-latest
+    if: ${{ github.ref_name == 'main' }}
     needs: python-ci
     steps:
 
